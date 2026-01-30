@@ -1,26 +1,443 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-display: "Poppins", sans-serif;
+  --font-body: "Poppins", sans-serif;
+
+  /* Base palette from ForgeDesignSystemLibrary */
+  --fds-red-01: #fee8e8;
+  --fds-red-02: #ffcbcb;
+  --fds-red-03: #ff9b9b;
+  --fds-red-04: #ef4e4e;
+  --fds-red-05: #e12d39;
+  --fds-red-06: #ab091e;
+  --fds-red-07: #610316;
+
+  --fds-orange-01: #ffe8d9;
+  --fds-orange-02: #ffc3a0;
+  --fds-orange-03: #ff9d73;
+  --fds-orange-04: #ff7847;
+  --fds-orange-05: #f35627;
+  --fds-orange-06: #c52707;
+  --fds-orange-07: #841003;
+
+  --fds-yellow-01: #fffbea;
+  --fds-yellow-02: #fff3c4;
+  --fds-yellow-03: #fce588;
+  --fds-yellow-04: #fadb5f;
+  --fds-yellow-05: #f0b429;
+  --fds-yellow-06: #cb6e17;
+  --fds-yellow-07: #8d2b0b;
+
+  --fds-green-01: #e2e8d6;
+  --fds-green-02: #bdcba0;
+  --fds-green-03: #a1b578;
+  --fds-green-04: #809060;
+  --fds-green-05: #606c48;
+  --fds-green-06: #404830;
+  --fds-green-07: #202418;
+
+  --fds-lightblue-01: #e3f8ff;
+  --fds-lightblue-02: #b3ecff;
+  --fds-lightblue-03: #81defd;
+  --fds-lightblue-04: #40c3f7;
+  --fds-lightblue-05: #2bb0ed;
+  --fds-lightblue-06: #127fbf;
+  --fds-lightblue-07: #035388;
+
+  --fds-blue-01: #e8f3fe;
+  --fds-blue-02: #cbe1ff;
+  --fds-blue-03: #5ca6f1;
+  --fds-blue-04: #2186eb;
+  --fds-blue-05: #0967d2;
+  --fds-blue-06: #03449e;
+  --fds-blue-07: #002159;
+
+  --fds-purple-01: #cabfc4;
+  --fds-purple-02: #b0a0a6;
+  --fds-purple-03: #968089;
+  --fds-purple-04: #7c616c;
+  --fds-purple-05: #634d56;
+  --fds-purple-06: #4a3a40;
+  --fds-purple-07: #31262b;
+
+  --fds-pink-01: #ffe3ec;
+  --fds-pink-02: #ffb8d2;
+  --fds-pink-03: #ff8cba;
+  --fds-pink-04: #e8368f;
+  --fds-pink-05: #da127d;
+  --fds-pink-06: #a30664;
+  --fds-pink-07: #620042;
+
+  --fds-gray-01: #ffffff;
+  --fds-gray-02: #f0f4f8;
+  --fds-gray-03: #d9e2ec;
+  --fds-gray-04: #afbfcf;
+  --fds-gray-05: #6d89a4;
+  --fds-gray-06: #375470;
+  --fds-gray-07: #193754;
+  --fds-gray-08: #0f1820;
+
+  /* Spacing tokens */
+  --fds-space-3xs: 2px;
+  --fds-space-2xs: 4px;
+  --fds-space-xs: 8px;
+  --fds-space-sm: 12px;
+  --fds-space-md: 16px;
+  --fds-space-lg: 24px;
+  --fds-space-xl: 32px;
+  --fds-space-2xl: 40px;
+  --fds-space-3xl: 48px;
+  --fds-space-4xl: 56px;
+  --fds-space-5xl: 64px;
+  --fds-space-6xl: 72px;
+  --fds-space-7xl: 80px;
+
+  /* Radius tokens */
+  --fds-radius-2xs: 2px;
+  --fds-radius-xs: 4px;
+  --fds-radius-sm: 8px;
+  --fds-radius-md: 12px;
+  --fds-radius-lg: 16px;
+  --fds-radius-xl: 24px;
+  --fds-radius-2xl: 32px;
+  --fds-radius-3xl: 40px;
+  --fds-radius-4xl: 48px;
+
+  /* Typography tokens */
+  --fds-font-size-xs: 10px;
+  --fds-font-size-sm: 12px;
+  --fds-font-size-md: 14px;
+  --fds-font-size-lg: 16px;
+  --fds-font-size-xl: 18px;
+  --fds-font-size-2xl: 20px;
+  --fds-font-size-3xl: 24px;
+  --fds-font-size-4xl: 28px;
+  --fds-font-size-5xl: 32px;
+  --fds-font-size-6xl: 36px;
+  --fds-font-size-7xl: 40px;
+  --fds-font-size-8xl: 48px;
+  --fds-font-size-9xl: 56px;
+
+  --fds-line-2xs: 12px;
+  --fds-line-xs: 16px;
+  --fds-line-sm: 20px;
+  --fds-line-md: 24px;
+  --fds-line-lg: 28px;
+  --fds-line-xl: 32px;
+  --fds-line-2xl: 40px;
+  --fds-line-3xl: 48px;
+  --fds-line-4xl: 56px;
+
+  /* Elevation tokens */
+  --fds-shadow-10-1: 0 2px 4px rgba(0, 33, 89, 0.02);
+  --fds-shadow-10-2: 0 8px 16px rgba(0, 33, 89, 0.04);
+  --fds-shadow-20-1: 0 1px 2px rgba(25, 55, 84, 0.04);
+  --fds-shadow-20-2: 0 2px 4px rgba(0, 33, 89, 0.06);
+
+  /* Light theme semantic tokens */
+  --fds-primary-text-stronger: var(--fds-blue-07);
+  --fds-primary-text-strong: var(--fds-blue-06);
+  --fds-primary-text-default: var(--fds-blue-06);
+  --fds-primary-text-weak: var(--fds-blue-04);
+
+  --fds-primary-bg-stronger: var(--fds-blue-07);
+  --fds-primary-bg-strong: var(--fds-blue-06);
+  --fds-primary-bg-default: var(--fds-blue-06);
+  --fds-primary-bg-weak: var(--fds-blue-01);
+
+  --fds-primary-border-stronger: var(--fds-blue-07);
+  --fds-primary-border-strong: var(--fds-blue-06);
+  --fds-primary-border-default: var(--fds-blue-06);
+
+  --fds-secondary-text-stronger: var(--fds-yellow-07);
+  --fds-secondary-text-strong: var(--fds-yellow-05);
+  --fds-secondary-text-default: var(--fds-yellow-04);
+  --fds-secondary-text-weak: var(--fds-yellow-03);
+
+  --fds-secondary-bg-stronger: var(--fds-yellow-07);
+  --fds-secondary-bg-strong: var(--fds-yellow-05);
+  --fds-secondary-bg-default: var(--fds-yellow-04);
+  --fds-secondary-bg-weak: var(--fds-yellow-01);
+
+  --fds-secondary-border-stronger: var(--fds-yellow-07);
+  --fds-secondary-border-strong: var(--fds-yellow-05);
+  --fds-secondary-border-default: var(--fds-yellow-04);
+
+  --fds-neutral-text-strong: var(--fds-gray-08);
+  --fds-neutral-text-default: var(--fds-gray-06);
+  --fds-neutral-text-weak: var(--fds-gray-05);
+  --fds-neutral-text-weaker: var(--fds-gray-01);
+
+  --fds-neutral-bg-stronger: var(--fds-gray-08);
+  --fds-neutral-bg-strong: var(--fds-gray-04);
+  --fds-neutral-bg-default: var(--fds-gray-03);
+  --fds-neutral-bg-weak: var(--fds-gray-02);
+  --fds-neutral-bg-weaker: var(--fds-gray-01);
+  --fds-neutral-bg-scrim: rgba(25, 55, 84, 0.7);
+
+  --fds-neutral-border-strong: var(--fds-gray-05);
+  --fds-neutral-border-default: var(--fds-gray-04);
+  --fds-neutral-border-weak: var(--fds-gray-03);
+
+  --fds-success-text: var(--fds-green-07);
+  --fds-success-bg: var(--fds-green-05);
+  --fds-success-bg-weak: var(--fds-green-01);
+
+  --fds-warning-text: var(--fds-yellow-07);
+  --fds-warning-bg: var(--fds-yellow-04);
+  --fds-warning-bg-weak: var(--fds-yellow-01);
+
+  --fds-info-text: var(--fds-blue-04);
+  --fds-info-bg: var(--fds-blue-04);
+  --fds-info-bg-weak: var(--fds-blue-01);
+
+  --fds-danger-text: var(--fds-red-05);
+  --fds-danger-bg: var(--fds-red-05);
+  --fds-danger-bg-weak: var(--fds-red-01);
+
+  /* Icon tokens */
+  --fds-icon-blue: var(--fds-blue-05);
+  --fds-icon-bg-blue: var(--fds-blue-01);
+  --fds-icon-gray: var(--fds-gray-06);
+  --fds-icon-bg-gray: var(--fds-gray-02);
+  --fds-icon-green: var(--fds-green-05);
+  --fds-icon-bg-green: var(--fds-green-01);
+
+  /* Badge tokens */
+  --fds-badge-text-red: var(--fds-red-05);
+  --fds-badge-bg-red: var(--fds-red-01);
+  --fds-badge-text-orange: var(--fds-orange-06);
+  --fds-badge-bg-orange: var(--fds-orange-01);
+  --fds-badge-text-yellow: var(--fds-yellow-07);
+  --fds-badge-bg-yellow: var(--fds-yellow-02);
+  --fds-badge-text-green: var(--fds-green-05);
+  --fds-badge-bg-green: var(--fds-green-01);
+  --fds-badge-text-lightblue: var(--fds-lightblue-07);
+  --fds-badge-bg-lightblue: var(--fds-lightblue-01);
+  --fds-badge-text-blue: var(--fds-blue-05);
+  --fds-badge-bg-blue: var(--fds-blue-01);
+  --fds-badge-text-purple: var(--fds-purple-06);
+  --fds-badge-bg-purple: var(--fds-purple-01);
+  --fds-badge-text-pink: var(--fds-pink-06);
+  --fds-badge-bg-pink: var(--fds-pink-01);
+  --fds-badge-text-gray: var(--fds-gray-06);
+  --fds-badge-bg-gray: var(--fds-gray-01);
+
+  /* Gradient tokens */
+  --fds-gradient-01: linear-gradient(90deg, var(--fds-primary-bg-default), var(--fds-neutral-bg-default));
+
+  --background: var(--fds-neutral-bg-weaker);
+  --foreground: var(--fds-neutral-text-strong);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not(.theme-light) {
+    --fds-primary-text-stronger: var(--fds-blue-02);
+    --fds-primary-text-strong: var(--fds-blue-03);
+    --fds-primary-text-default: var(--fds-blue-04);
+    --fds-primary-text-weak: var(--fds-blue-06);
+
+    --fds-primary-bg-stronger: var(--fds-blue-02);
+    --fds-primary-bg-strong: var(--fds-blue-03);
+    --fds-primary-bg-default: var(--fds-blue-04);
+    --fds-primary-bg-weak: var(--fds-blue-06);
+
+    --fds-primary-border-stronger: var(--fds-blue-02);
+    --fds-primary-border-strong: var(--fds-blue-03);
+    --fds-primary-border-default: var(--fds-blue-04);
+
+    --fds-secondary-text-stronger: var(--fds-yellow-02);
+    --fds-secondary-text-strong: var(--fds-yellow-03);
+    --fds-secondary-text-default: var(--fds-yellow-04);
+    --fds-secondary-text-weak: var(--fds-yellow-06);
+
+    --fds-secondary-bg-stronger: var(--fds-yellow-02);
+    --fds-secondary-bg-strong: var(--fds-yellow-03);
+    --fds-secondary-bg-default: var(--fds-yellow-04);
+    --fds-secondary-bg-weak: var(--fds-yellow-06);
+
+    --fds-secondary-border-stronger: var(--fds-yellow-02);
+    --fds-secondary-border-strong: var(--fds-yellow-03);
+    --fds-secondary-border-default: var(--fds-yellow-04);
+
+    --fds-neutral-text-strong: var(--fds-gray-01);
+    --fds-neutral-text-default: var(--fds-gray-03);
+    --fds-neutral-text-weak: var(--fds-gray-05);
+    --fds-neutral-text-weaker: var(--fds-gray-08);
+
+    --fds-neutral-bg-stronger: var(--fds-gray-04);
+    --fds-neutral-bg-strong: var(--fds-gray-05);
+    --fds-neutral-bg-default: var(--fds-gray-06);
+    --fds-neutral-bg-weak: var(--fds-gray-08);
+    --fds-neutral-bg-weaker: var(--fds-gray-07);
+    --fds-neutral-bg-scrim: rgba(25, 55, 84, 0.7);
+
+    --fds-neutral-border-strong: var(--fds-gray-03);
+    --fds-neutral-border-default: var(--fds-gray-04);
+    --fds-neutral-border-weak: var(--fds-gray-05);
+
+    --fds-success-text: var(--fds-green-02);
+    --fds-success-bg: var(--fds-green-03);
+    --fds-success-bg-weak: var(--fds-green-07);
+
+    --fds-warning-text: var(--fds-yellow-03);
+    --fds-warning-bg: var(--fds-yellow-03);
+    --fds-warning-bg-weak: var(--fds-yellow-06);
+
+    --fds-info-text: var(--fds-blue-03);
+    --fds-info-bg: var(--fds-blue-03);
+    --fds-info-bg-weak: var(--fds-blue-06);
+
+    --fds-danger-text: var(--fds-red-04);
+    --fds-danger-bg: var(--fds-red-03);
+    --fds-danger-bg-weak: var(--fds-red-07);
+
+    --fds-icon-blue: var(--fds-blue-01);
+    --fds-icon-bg-blue: var(--fds-blue-05);
+    --fds-icon-gray: var(--fds-gray-03);
+    --fds-icon-bg-gray: var(--fds-gray-06);
+    --fds-icon-green: var(--fds-green-02);
+    --fds-icon-bg-green: var(--fds-green-06);
+
+    --fds-badge-text-red: var(--fds-red-01);
+    --fds-badge-bg-red: var(--fds-red-06);
+    --fds-badge-text-orange: var(--fds-orange-01);
+    --fds-badge-bg-orange: var(--fds-orange-06);
+    --fds-badge-text-yellow: var(--fds-yellow-01);
+    --fds-badge-bg-yellow: var(--fds-yellow-06);
+    --fds-badge-text-green: var(--fds-green-02);
+    --fds-badge-bg-green: var(--fds-green-06);
+    --fds-badge-text-lightblue: var(--fds-lightblue-01);
+    --fds-badge-bg-lightblue: var(--fds-lightblue-06);
+    --fds-badge-text-blue: var(--fds-blue-01);
+    --fds-badge-bg-blue: var(--fds-blue-06);
+    --fds-badge-text-purple: var(--fds-purple-01);
+    --fds-badge-bg-purple: var(--fds-purple-06);
+    --fds-badge-text-pink: var(--fds-pink-01);
+    --fds-badge-bg-pink: var(--fds-pink-06);
+    --fds-badge-text-gray: var(--fds-gray-02);
+    --fds-badge-bg-gray: var(--fds-gray-06);
+
+    --fds-gradient-01: linear-gradient(90deg, var(--fds-primary-bg-default), var(--fds-neutral-bg-default));
+
+    --background: var(--fds-neutral-bg-weaker);
+    --foreground: var(--fds-neutral-text-strong);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="light"],
+:root.theme-light {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"],
+:root.theme-dark {
+  --fds-primary-text-stronger: var(--fds-blue-02);
+  --fds-primary-text-strong: var(--fds-blue-03);
+  --fds-primary-text-default: var(--fds-blue-04);
+  --fds-primary-text-weak: var(--fds-blue-06);
+
+  --fds-primary-bg-stronger: var(--fds-blue-02);
+  --fds-primary-bg-strong: var(--fds-blue-03);
+  --fds-primary-bg-default: var(--fds-blue-04);
+  --fds-primary-bg-weak: var(--fds-blue-06);
+
+  --fds-primary-border-stronger: var(--fds-blue-02);
+  --fds-primary-border-strong: var(--fds-blue-03);
+  --fds-primary-border-default: var(--fds-blue-04);
+
+  --fds-secondary-text-stronger: var(--fds-yellow-02);
+  --fds-secondary-text-strong: var(--fds-yellow-03);
+  --fds-secondary-text-default: var(--fds-yellow-04);
+  --fds-secondary-text-weak: var(--fds-yellow-06);
+
+  --fds-secondary-bg-stronger: var(--fds-yellow-02);
+  --fds-secondary-bg-strong: var(--fds-yellow-03);
+  --fds-secondary-bg-default: var(--fds-yellow-04);
+  --fds-secondary-bg-weak: var(--fds-yellow-06);
+
+  --fds-secondary-border-stronger: var(--fds-yellow-02);
+  --fds-secondary-border-strong: var(--fds-yellow-03);
+  --fds-secondary-border-default: var(--fds-yellow-04);
+
+  --fds-neutral-text-strong: var(--fds-gray-01);
+  --fds-neutral-text-default: var(--fds-gray-03);
+  --fds-neutral-text-weak: var(--fds-gray-05);
+  --fds-neutral-text-weaker: var(--fds-gray-08);
+
+  --fds-neutral-bg-stronger: var(--fds-gray-04);
+  --fds-neutral-bg-strong: var(--fds-gray-05);
+  --fds-neutral-bg-default: var(--fds-gray-06);
+  --fds-neutral-bg-weak: var(--fds-gray-08);
+  --fds-neutral-bg-weaker: var(--fds-gray-07);
+  --fds-neutral-bg-scrim: rgba(25, 55, 84, 0.7);
+
+  --fds-neutral-border-strong: var(--fds-gray-03);
+  --fds-neutral-border-default: var(--fds-gray-04);
+  --fds-neutral-border-weak: var(--fds-gray-05);
+
+  --fds-success-text: var(--fds-green-02);
+  --fds-success-bg: var(--fds-green-03);
+  --fds-success-bg-weak: var(--fds-green-07);
+
+  --fds-warning-text: var(--fds-yellow-03);
+  --fds-warning-bg: var(--fds-yellow-03);
+  --fds-warning-bg-weak: var(--fds-yellow-06);
+
+  --fds-info-text: var(--fds-blue-03);
+  --fds-info-bg: var(--fds-blue-03);
+  --fds-info-bg-weak: var(--fds-blue-06);
+
+  --fds-danger-text: var(--fds-red-04);
+  --fds-danger-bg: var(--fds-red-03);
+  --fds-danger-bg-weak: var(--fds-red-07);
+
+  --fds-icon-blue: var(--fds-blue-01);
+  --fds-icon-bg-blue: var(--fds-blue-05);
+  --fds-icon-gray: var(--fds-gray-03);
+  --fds-icon-bg-gray: var(--fds-gray-06);
+  --fds-icon-green: var(--fds-green-02);
+  --fds-icon-bg-green: var(--fds-green-06);
+
+  --fds-badge-text-red: var(--fds-red-01);
+  --fds-badge-bg-red: var(--fds-red-06);
+  --fds-badge-text-orange: var(--fds-orange-01);
+  --fds-badge-bg-orange: var(--fds-orange-06);
+  --fds-badge-text-yellow: var(--fds-yellow-01);
+  --fds-badge-bg-yellow: var(--fds-yellow-06);
+  --fds-badge-text-green: var(--fds-green-02);
+  --fds-badge-bg-green: var(--fds-green-06);
+  --fds-badge-text-lightblue: var(--fds-lightblue-01);
+  --fds-badge-bg-lightblue: var(--fds-lightblue-06);
+  --fds-badge-text-blue: var(--fds-blue-01);
+  --fds-badge-bg-blue: var(--fds-blue-06);
+  --fds-badge-text-purple: var(--fds-purple-01);
+  --fds-badge-bg-purple: var(--fds-purple-06);
+  --fds-badge-text-pink: var(--fds-pink-01);
+  --fds-badge-bg-pink: var(--fds-pink-06);
+  --fds-badge-text-gray: var(--fds-gray-02);
+  --fds-badge-bg-gray: var(--fds-gray-06);
+
+  --fds-gradient-01: linear-gradient(90deg, var(--fds-primary-bg-default), var(--fds-neutral-bg-default));
+
+  --background: var(--fds-neutral-bg-weaker);
+  --foreground: var(--fds-neutral-text-strong);
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-body);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
 }

@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Numonor - The Ultimate Numbers Logic Puzzle",
-  description: "Challenge your mind with Numonor - an addictive numbers logic puzzle game. Improve your problem-solving skills, compete on leaderboards, and enjoy hundreds of puzzles. Download now on App Store and Google Play!",
+  description: "Unwind with Numonor, a calming numbers logic puzzle. Improve your problem-solving skills, enjoy hundreds of puzzles, and take your time thinking through each board. Download now on App Store and Google Play!",
 };
 
 export default function RootLayout({
