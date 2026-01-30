@@ -6,10 +6,10 @@ type SlotProps = React.HTMLAttributes<HTMLElement> & { children: React.ReactNode
 const Slot = React.forwardRef<HTMLElement, SlotProps>(
   ({ children, className, ...props }, ref) => {
     if (!React.isValidElement(children)) return null;
-    return React.cloneElement(children, {
-      ...props,
-      ref,
-      className: cn(className, (children.props as { className?: string }).className),
+    const child = children as React.ReactElement<any, any>;
+    return React.cloneElement<any, any>(child, {
+      ...(props as Record<string, unknown>),
+      className: cn(className, (child.props as { className?: string }).className),
     });
   }
 );
@@ -43,19 +43,26 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", size = "md", asChild, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+  ({ className, variant = "primary", size = "md", asChild, children, ...props }, ref) => {
+    const mergedClassName = cn(
+      "inline-flex items-center justify-center gap-[var(--fds-space-xs)] rounded-[var(--fds-radius-md)] font-medium leading-[var(--fds-line-md)] transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fds-primary-border-strong)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--fds-neutral-bg-weaker)] disabled:pointer-events-none disabled:opacity-50",
+      variantClasses[variant],
+      sizeClasses[size],
+      className
+    );
+
+    if (asChild) {
+      return (
+        <Slot className={mergedClassName} {...props}>
+          {children}
+        </Slot>
+      );
+    }
+
     return (
-      <Comp
-        ref={ref as React.Ref<HTMLElement>}
-        className={cn(
-          "inline-flex items-center justify-center gap-[var(--fds-space-xs)] rounded-[var(--fds-radius-md)] font-medium leading-[var(--fds-line-md)] transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--fds-primary-border-strong)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--fds-neutral-bg-weaker)] disabled:pointer-events-none disabled:opacity-50",
-          variantClasses[variant],
-          sizeClasses[size],
-          className
-        )}
-        {...props}
-      />
+      <button ref={ref} className={mergedClassName} {...props}>
+        {children}
+      </button>
     );
   }
 );

@@ -19,7 +19,7 @@ interface HeroProps {
   subtitle: string;
   description: string;
   primaryCta: string;
-  stats: HeroStat[];
+  stats: ReadonlyArray<HeroStat>;
   store: HeroStoreLabels;
 }
 

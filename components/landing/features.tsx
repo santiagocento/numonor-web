@@ -11,7 +11,7 @@ interface FeaturesProps {
   badge: string;
   title: string;
   description: string;
-  items: FeatureItem[];
+  items: ReadonlyArray<FeatureItem>;
   footerNote: string;
 }
 
