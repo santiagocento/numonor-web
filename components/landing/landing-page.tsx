@@ -67,21 +67,21 @@ function ToggleGroup<T extends string>({
 }
 
 export function LandingPage() {
-  const [systemTheme, setSystemTheme] = useState<"light" | "dark">(() => {
-    if (typeof window === "undefined") {
-      return "light";
-    }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  });
-  const [themePreference, setThemePreference] = useState<ThemePreference>(() => systemTheme);
+  const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light");
+  const [themePreference, setThemePreference] = useState<ThemePreference>("light");
   const [hasManualTheme, setHasManualTheme] = useState(false);
-  const [languagePreference, setLanguagePreference] = useState<LanguagePreference>(() => {
-    if (typeof window === "undefined") {
-      return "en";
+  const [languagePreference, setLanguagePreference] = useState<LanguagePreference>("en");
+
+  useEffect(() => {
+    const nextSystemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    setSystemTheme(nextSystemTheme);
+    if (!hasManualTheme) {
+      setThemePreference(nextSystemTheme);
     }
+
     const navLanguage = window.navigator.language?.toLowerCase() ?? "en";
-    return navLanguage.startsWith("es") ? "es" : "en";
-  });
+    setLanguagePreference(navLanguage.startsWith("es") ? "es" : "en");
+  }, [hasManualTheme]);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
