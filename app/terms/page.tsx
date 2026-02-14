@@ -37,6 +37,18 @@ export default function TermsPage() {
             Numonor is provided for personal, non-commercial use. You agree not to misuse the App, interfere with
             its normal operation, or attempt unauthorized access to systems or services connected to the App.
           </p>
+          <p>
+            For iOS users, app usage is also subject to Apple&apos;s{" "}
+            <a
+              className="text-[var(--fds-primary-text-default)] underline"
+              href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Standard EULA
+            </a>
+            .
+          </p>
         </section>
 
         <section className="flex flex-col gap-[var(--fds-space-sm)]">
