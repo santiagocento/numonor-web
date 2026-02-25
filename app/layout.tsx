@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -8,6 +9,9 @@ export const metadata: Metadata = {
     icon: [{ url: "/appIconsmall.png", type: "image/png" }],
     shortcut: "/appIconsmall.png",
     apple: "/appIconsmall.png",
+  },
+  other: {
+    "google-adsense-account": "ca-pub-8686187463793411",
   },
 };
 
@@ -19,6 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8686187463793411"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         {children}
       </body>
     </html>
